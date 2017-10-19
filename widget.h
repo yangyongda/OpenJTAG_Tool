@@ -2,6 +2,8 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QString>
+#include <QProcess>
 
 namespace Ui {
 class Widget;
@@ -18,6 +20,11 @@ public:
 private:
     Ui::Widget *ui;
     void setView();
+    QString program;
+    QProcess * myProcess;
+
+private slots:
+    void browser_2410();
 };
 
 #endif // WIDGET_H
