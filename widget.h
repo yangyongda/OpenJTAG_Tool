@@ -25,6 +25,12 @@ private:
 
 private slots:
     void browser_2410();
+    void burn_2410();
+    void browser_2440();
+    void burn_2440();
+    void browser_6410();
+    void burn_6410();
+
 };
 
 #endif // WIDGET_H
