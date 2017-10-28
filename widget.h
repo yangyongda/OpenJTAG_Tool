@@ -30,6 +30,7 @@ private slots:
     void burn_2440();
     void browser_6410();
     void burn_6410();
+    void FinishSlot(int);
 
 };
 

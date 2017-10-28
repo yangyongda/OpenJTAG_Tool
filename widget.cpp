@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QDebug>
+#include <QMessageBox>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -21,6 +22,7 @@ Widget::Widget(QWidget *parent) :
     connect(ui->burn_2440,SIGNAL(clicked(bool)),this,SLOT(burn_2440()));
     connect(ui->openFile_6410,SIGNAL(clicked(bool)),this,SLOT(browser_6410()));
     connect(ui->burn_6410,SIGNAL(clicked(bool)),this,SLOT(burn_6410()));
+    connect(myProcess,SIGNAL(finished(int)),this,SLOT(FinishSlot(int)));
 }
 
 Widget::~Widget()
@@ -86,7 +88,8 @@ void Widget::burn_2440()
     {
         myProcess->start(program, arguments);
     }
-    qDebug() <<myProcess->readAllStandardOutput();
+    //myProcess->waitForFinished();
+    //qDebug() <<myProcess->readAllStandardOutput();
 }
 
 void Widget::browser_6410()
@@ -111,5 +114,10 @@ void Widget::burn_6410()
     {
         myProcess->start(program, arguments);
     }
+}
+
+void Widget::FinishSlot(int value)
+{
     qDebug() <<myProcess->readAllStandardOutput();
+    QMessageBox::about(this,QStringLiteral("烧录完成"),QStringLiteral("烧录完成！"));
 }
